@@ -18,5 +18,11 @@
   },
   "devDependencies": {
     "gatsby-cli": "^5.13.7"
+  },
+  "overrides": {
+    "semver": "^7.5.2",
+    "braces": "^3.0.3",
+    "lodash": "^4.17.21",
+    "axios": "^1.8.4"
   }
 }
