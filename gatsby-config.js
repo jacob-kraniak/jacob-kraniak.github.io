@@ -5,7 +5,5 @@ module.exports = {
     siteUrl: "https://jacob-kraniak.github.io",
   },
   pathPrefix: "/",
-  plugins: [
-    "gatsby-plugin-react-helmet",
-  ],
+  plugins: [],
 };

@@ -1,13 +1,12 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+
+export function Head() {
+  return <title>Jacob Kraniak | Cybersecurity Portfolio</title>;
+}
 
 export default function Home() {
   return (
     <div style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
-      <Helmet>
-        <title>Jacob Kraniak | Cybersecurity Portfolio</title>
-      </Helmet>
-      
       <header style={{ textAlign: "center", marginBottom: "3rem" }}>
         <h1>Jacob Kraniak</h1>
         <p>Cybersecurity Professional</p>
