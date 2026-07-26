@@ -62,6 +62,7 @@ mindmap
 - Short professional positioning (Security Systems Engineer + cybersecurity practitioner + community builder)
 - One-sentence value proposition
 - Primary CTAs: Resume · Contact · View Projects
+- Inspirational Quotes. My favorite quotes from tech leaders, authors, film/tv that align with my core principles and values.
 
 ## 3. Projects & Initiatives
 
