@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import pageData from "../data/contact.yml";
+import type { ContactPage } from "../lib/types";
+import { isPlaceholder } from "../lib/richText";
+
+const page = pageData as unknown as ContactPage;
+---
+
+<BaseLayout title={page.documentTitle} sideBarActiveItemID="contact">
+  <div class="font-mono text-xs text-primary">{page.prompt}</div>
+  <h1 class="text-2xl font-bold mt-1 mb-4">{page.heading}</h1>
+
+  <section class="pb-8">
+    <div class="h-sec">{page.methodsHeading}</div>
+    <div class="rounded-box border line bg-base-200 p-4 space-y-2">
+      {page.methods.map((method) => <p class:list={["text-sm", isPlaceholder(method) && "ph"]}>{method}</p>)}
+    </div>
+  </section>
+
+  <section class="pb-8">
+    <div class="h-sec">{page.hihelloHeading}</div>
+    <div class="rounded-box border line bg-base-200 p-4">
+      <p class:list={["text-sm", isPlaceholder(page.hihello) && "ph"]}>{page.hihello}</p>
+    </div>
+  </section>
+
+  <p class="font-mono text-xs mute">{page.note}</p>
+</BaseLayout>

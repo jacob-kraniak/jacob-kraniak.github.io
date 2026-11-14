@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import pageData from "../data/oss.yml";
+import type { OssPage } from "../lib/types";
+import { isPlaceholder } from "../lib/richText";
+
+const page = pageData as unknown as OssPage;
+---
+
+<BaseLayout title={page.documentTitle} sideBarActiveItemID="oss">
+  <div class="font-mono text-xs text-primary">{page.prompt}</div>
+  <h1 class="text-2xl font-bold mt-1 mb-1">{page.heading}</h1>
+  <p class="text-sm mute mb-6">{page.lede}</p>
+
+  <div class="grid gap-3 md:grid-cols-2">
+    {
+      page.items.map((item) => (
+        <article class="rounded-box border line bg-base-200 p-4">
+          <h2 class="font-mono text-sm font-semibold">{item.title}</h2>
+          <p class:list={["text-sm mt-1 leading-snug", isPlaceholder(item.blurb) ? "ph" : "mute"]}>{item.blurb}</p>
+          {item.links.length > 0 && (
+            <ul class="font-mono text-xs mt-3 space-y-1">
+              {item.links.map((link) => (
+                <li>
+                  <span class="text-primary">›</span>{" "}
+                  <a class="link link-secondary" href={link.href} target="_blank" rel="noopener">{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</BaseLayout>

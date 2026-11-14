@@ -1,0 +1,43 @@
+---
+import SideBarMenu from "./SideBarMenu.astro";
+import siteData from "../data/site.yml";
+import certFile from "../data/certs.json";
+import type { CertFile, SiteContent } from "../lib/types";
+
+interface Props {
+  sideBarActiveItemID?: string;
+}
+
+const { sideBarActiveItemID } = Astro.props;
+const site = siteData as unknown as SiteContent;
+const certs = certFile as CertFile;
+---
+
+<div class="drawer-side z-40">
+  <label for="my-drawer" class="drawer-overlay"></label>
+  <aside class="min-h-full w-60 bg-base-200 border-r line text-base-content">
+    <div class="sticky top-0 px-4 pt-6 pb-4 flex flex-col gap-5">
+      <a href="/" class="flex items-center gap-3">
+        <img
+          src={site.identity.avatar}
+          alt={site.identity.avatarAlt}
+          width="44"
+          height="44"
+          class="rounded-full ring-2 ring-primary"
+        />
+        <div class="leading-tight">
+          <div class="font-mono text-sm"><span class="text-primary">~/</span>{site.identity.handle}</div>
+          <div class="text-xs mute">{site.identity.subtitle}</div>
+        </div>
+      </a>
+      <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
+      <div class="font-mono text-[11px] mute border-t line pt-3 space-y-1">
+        <div><span class="text-primary">{site.sidebar.statusLabel}</span> {site.sidebar.status}</div>
+        <div>
+          <span class="text-primary">{site.sidebar.nextLabel}</span>
+          {certs.next.join(" → ").toLowerCase()}
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>

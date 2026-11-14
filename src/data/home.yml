@@ -1,0 +1,48 @@
+# Home page. Featured cards use ids from projects.json. Cert names come from certs.json.
+# Quotes rotate every 8 seconds. Keep [PLACEHOLDER ...] lines until the real copy exists.
+
+prompt: "$ whoami"
+name: Jacob Kraniak
+role: cybersecurity · home-lab builder · GRC
+bio: >-
+  Building and documenting a segmented home lab, tracking a cert path in public,
+  and running small-business security assessments. Interests: security architecture,
+  workflow automation, API/data pipelines, threat intel, GRC.
+researchFocus: "[PLACEHOLDER — one-line research focus in Jacob's words]"
+
+quotePrompt: "$ quotes"
+quotes:
+  - text: "[PLACEHOLDER — quote 1]"
+    attribution: "[PLACEHOLDER — attribution 1]"
+  - text: "[PLACEHOLDER — quote 2]"
+    attribution: "[PLACEHOLDER — attribution 2]"
+  - text: "[PLACEHOLDER — quote 3]"
+    attribution: "[PLACEHOLDER — attribution 3]"
+
+projectsHeading: active projects
+projectsLinkLabel: "all notes →"
+projectsHref: /projects
+featured: [hns, smb, cert]
+
+certsHeading: certs
+certsLinkLabel: "details →"
+certsHref: /certs
+certNextPrefix: "next:"
+certVerified: verified on
+certProfileLabel: credly
+
+stackHeading: stack
+stack:
+  - python
+  - powershell
+  - bash
+  - typescript
+  - javascript
+  - proxmox
+  - wazuh
+  - netbox
+  - omada-sdn
+  - portainer
+  - pi-hole
+  - postman
+  - github-actions

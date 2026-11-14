@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CertRow from "../components/CertRow.astro";
+import pageData from "../data/certs.yml";
+import certFile from "../data/certs.json";
+import type { CertFile, CertsPage } from "../lib/types";
+
+const page = pageData as unknown as CertsPage;
+const certs = certFile as CertFile;
+---
+
+<BaseLayout title={page.documentTitle} sideBarActiveItemID="certs">
+  <div class="font-mono text-xs text-primary">{page.prompt}</div>
+  <h1 class="text-2xl font-bold mt-1 mb-4">{page.heading}</h1>
+  <CertRow full />
+  <div class="h-sec mt-8">{page.roadmapHeading}</div>
+  <ul class="font-mono text-sm space-y-1">
+    <li><span class="text-primary">›</span> {page.nextPrefix} {certs.next.join(" → ")}</li>
+    <li><span class="text-primary">›</span> {page.laterPrefix} {page.later}</li>
+    <li class="mute">
+      <span class="text-primary">›</span> {page.trackedPrefix}{" "}
+      {
+        page.tracked.map((link, index) => (
+          <>
+            {index > 0 && page.trackedJoiner}
+            <a class="link link-secondary" href={link.href}>{link.label}</a>
+          </>
+        ))
+      }
+    </li>
+  </ul>
+</BaseLayout>

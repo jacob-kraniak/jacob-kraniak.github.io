@@ -1,0 +1,63 @@
+---
+import type { Quote } from "../lib/types";
+import { isPlaceholder } from "../lib/richText";
+
+interface Props {
+  prompt: string;
+  quotes: Quote[];
+}
+
+const { prompt, quotes } = Astro.props;
+const first = quotes[0];
+const payload = JSON.stringify(quotes).replace(/</g, "\\u003c");
+---
+
+{
+  first && (
+    <figure class="rounded-box border line bg-base-200 px-4 py-3 max-w-2xl mt-4" data-quotes>
+      <div class="font-mono text-xs text-primary">{prompt}</div>
+      <blockquote class="text-sm mt-2 leading-snug" data-q-text>
+        {first.text}
+      </blockquote>
+      <figcaption class:list={["text-xs mt-1", isPlaceholder(first.attribution) ? "ph" : "mute"]} data-q-attr>
+        {first.attribution}
+      </figcaption>
+      <script is:inline type="application/json" data-quote-slots set:html={payload} />
+      <script is:inline>
+        (function () {
+          var script = document.currentScript;
+          var root = script && script.parentElement;
+          if (!root || root.dataset.ready) return;
+          root.dataset.ready = "1";
+          var slot = root.querySelector("[data-quote-slots]");
+          if (!slot) return;
+          var slots = [];
+          try {
+            slots = JSON.parse(slot.textContent || "[]");
+          } catch (e) {
+            return;
+          }
+          if (!slots.length) return;
+          var text = root.querySelector("[data-q-text]");
+          var attr = root.querySelector("[data-q-attr]");
+          if (!text || !attr) return;
+          var i = 0;
+          function show(n) {
+            var item = slots[n];
+            text.textContent = item.text;
+            attr.textContent = item.attribution;
+            attr.classList.toggle("ph", String(item.attribution).indexOf("[PLACEHOLDER") !== -1);
+            if (String(item.attribution).indexOf("[PLACEHOLDER") === -1) attr.classList.add("mute");
+            else attr.classList.remove("mute");
+          }
+          var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          if (reduce || slots.length < 2) return;
+          setInterval(function () {
+            i = (i + 1) % slots.length;
+            show(i);
+          }, 8000);
+        })();
+      </script>
+    </figure>
+  )
+}

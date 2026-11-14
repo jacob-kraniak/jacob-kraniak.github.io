@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{--mute:#7f93a3;--line:#1e2d3a}
+body{font-size:15px}
+.mute{color:var(--mute)}
+.line{border-color:var(--line)}
+.ph{color:#f0a500;font-weight:600}
+.glow{background:radial-gradient(700px 260px at 85% 0%,rgba(57,217,138,.10),transparent),radial-gradient(500px 220px at 0% 100%,rgba(76,195,255,.07),transparent)}
+.chip{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;border:1px solid var(--line);background:#111a22;padding:1px 7px;border-radius:999px;color:#b9c7d2}
+.h-sec{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;letter-spacing:.06em;color:#39d98a;text-transform:lowercase;margin-bottom:.6rem}
+.h-sec::before{content:"## ";color:#7f93a3}
+/* full-height sidebar on desktop (also in full-page screenshots) */
+@media (min-width:1024px){.drawer.lg\:drawer-open>.drawer-side{height:auto;min-height:100vh;align-self:stretch;overflow:visible}}

@@ -1,0 +1,38 @@
+# Long Island EVs.
+# In `news`, write a link as [label](https://example.com). Quote any line that contains a colon.
+# Leave [PLACEHOLDER ...] in place until the real link or date exists.
+
+documentTitle: "li-evs · Jacob Kraniak"
+prompt: "$ cat li-evs.md"
+heading: Long Island EVs
+lede: >-
+  Community EV education for Long Island and Metro New York — charging, incentives,
+  ownership notes, local events. Closely aligned with Drive Electric Long Island.
+missionHeading: mission
+mission:
+  - location-specific charging, incentives, policy, and events
+  - connect owners, enthusiasts, and prospective buyers in Nassau and Suffolk
+  - community discussions that move sustainable transit forward
+socialsHeading: socials
+socials:
+  - label: X
+    handle: "@LongIslandEVs"
+    href: https://x.com/LongIslandEVs
+  - label: Instagram
+    handle: "@longislandevs"
+    href: https://www.instagram.com/longislandevs/
+  - label: YouTube
+    handle: "@LongIslandEVs"
+    href: https://www.youtube.com/@LongIslandEVs
+  - label: Linktree
+    handle: linktr.ee/LongIslandEVs
+    href: https://linktr.ee/LongIslandEVs
+newsHeading: in the news
+news:
+  - "Farmingdale State College EV Symposium speaker (EV 101 breakout sessions). Listed on the [2023 speakers page](https://www.farmingdale.edu/resc/ev_symposium_2023_speakers_page.shtml)."
+  - "Newsday mentions: [PLACEHOLDER — article link]"
+  - "Drive Electric Long Island volunteer work. Coalition site: [driveelectriclongisland.org](https://driveelectriclongisland.org/). [PLACEHOLDER — dates]"
+  - "Long Island Advocate, [Electric vehicles make their mark on Long Island](https://longislandadvocate.com/electric-vehicles-make-their-mark-on-long-island/)."
+sourceLabel: "source:"
+sourceHref: https://github.com/jacob-kraniak/LongIslandEVs
+sourceText: github.com/jacob-kraniak/LongIslandEVs

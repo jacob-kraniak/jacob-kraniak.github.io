@@ -1,0 +1,9 @@
+# CV. These blocks are not sourced from public repos. Replace each placeholder; do not invent employers or dates.
+
+documentTitle: "cv · Jacob Kraniak"
+prompt: "$ cat cv.md"
+heading: CV
+blocks:
+  - "[PLACEHOLDER — experience timeline (not sourced from public repos)]"
+  - "[PLACEHOLDER — education]"
+  - "[PLACEHOLDER — downloadable resume PDF]"

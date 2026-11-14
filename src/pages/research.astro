@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import pageData from "../data/research.yml";
+import type { ResearchPage } from "../lib/types";
+import { isPlaceholder } from "../lib/richText";
+
+const page = pageData as unknown as ResearchPage;
+---
+
+<BaseLayout title={page.documentTitle} sideBarActiveItemID="research">
+  <div class="font-mono text-xs text-primary">{page.prompt}</div>
+  <h1 class="text-2xl font-bold mt-1 mb-1">{page.heading}</h1>
+  <p class="text-sm mute mb-6 max-w-2xl">{page.lede}</p>
+
+  <section class="pb-8">
+    <div class="h-sec">{page.handlesHeading}</div>
+    <ul class="font-mono text-sm space-y-1">
+      {
+        page.handles.map((handle) => (
+          <li>
+            <span class="text-primary">›</span> {handle.name}:{" "}
+            {handle.href ? (
+              <a class="link link-secondary" href={handle.href} target="_blank" rel="noopener">{handle.value}</a>
+            ) : (
+              <span class={isPlaceholder(handle.value) ? "ph" : undefined}>{handle.value}</span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="pb-8">
+    <div class="h-sec">{page.findingsHeading}</div>
+    {
+      page.findings.length === 0 ? (
+        <div class="rounded-box border line bg-base-200 p-4">
+          <p class:list={["text-sm", isPlaceholder(page.findingsPlaceholder) && "ph"]}>{page.findingsPlaceholder}</p>
+        </div>
+      ) : (
+        <ul class="font-mono text-sm space-y-2">
+          {page.findings.map((finding) => (
+            <li>
+              <span class="text-primary">›</span>{" "}
+              {finding.href ? (
+                <a class="link link-secondary" href={finding.href} target="_blank" rel="noopener">{finding.title}</a>
+              ) : (
+                finding.title
+              )}
+              {finding.note && <span class="mute"> — {finding.note}</span>}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  <p class="font-mono text-xs mute">
+    {page.repoLabel}{" "}
+    <a class="link link-secondary" href={page.repoHref} target="_blank" rel="noopener">{page.repoText}</a>
+  </p>
+</BaseLayout>
