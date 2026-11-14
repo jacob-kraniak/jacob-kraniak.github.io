@@ -1,0 +1,33 @@
+# Open source. Public contributions only. Add another item, or replace the "others" placeholder.
+
+documentTitle: "oss · Jacob Kraniak"
+prompt: "$ git log --author=jacob-kraniak --oneline"
+heading: Open source
+lede: Public contributions only. Links are to verified PRs or repos.
+items:
+  - title: AI-SIEM
+    blurb: Parsers, pipelines, and workflow docs on the public Sentinel-One/ai-siem repo.
+    links:
+      - href: https://github.com/Sentinel-One/ai-siem/pull/117
+        label: "PR #117 — ALB event serializer (merged)"
+      - href: https://github.com/Sentinel-One/ai-siem/pull/116
+        label: "PR #116 — ALB pipeline config (merged)"
+      - href: https://github.com/Sentinel-One/ai-siem/pull/104
+        label: "PR #104 — audit-notification workflow (merged)"
+      - href: https://github.com/Sentinel-One/ai-siem/pull/51
+        label: "PR #51 — hyperautomation docs reorg (merged)"
+  - title: Linguist
+    blurb: Language detection contributions on github-linguist/linguist.
+    links:
+      - href: https://github.com/github-linguist/linguist/pull/7896
+        label: "PR #7896 — add Power Query (M) language support (merged)"
+  - title: JsonToolsNppPlugin
+    blurb: Notepad++ JSON tools. Fork is public; the upstream PR was opened but not merged.
+    links:
+      - href: https://github.com/jacob-kraniak/JsonToolsNppPlugin
+        label: fork — jacob-kraniak/JsonToolsNppPlugin
+      - href: https://github.com/molsonkiko/JsonToolsNppPlugin/pull/118
+        label: "upstream PR #118 — opened, not merged"
+  - title: others
+    blurb: "[PLACEHOLDER — additional public PRs]"
+    links: []

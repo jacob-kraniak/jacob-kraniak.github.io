@@ -1,0 +1,22 @@
+# Research and bug bounty. Public write-ups only — nothing unpublished or sensitive.
+# Handles stay as placeholders until a public profile URL is confirmed.
+# To publish a finding, add an item under `findings` (title, href, note). An empty list shows the placeholder.
+
+documentTitle: "research · Jacob Kraniak"
+prompt: "$ cat research.md"
+heading: Research & bug bounty
+lede: >-
+  Public write-ups live in the research repo. Responsible disclosure only — no unpublished
+  or sensitive details here.
+handlesHeading: handles
+handles:
+  - name: Bugcrowd
+    value: "[PLACEHOLDER - confirm public profile]"
+  - name: Intigriti
+    value: "[PLACEHOLDER - confirm public profile]"
+findingsHeading: selected findings
+findingsPlaceholder: "[PLACEHOLDER — public write-ups only, once cleared for disclosure]"
+findings: []
+repoLabel: "repo:"
+repoHref: https://github.com/jacob-kraniak/cybersecurity-research
+repoText: github.com/jacob-kraniak/cybersecurity-research

@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import CertRow from "../components/CertRow.astro";
+import QuoteRotator from "../components/QuoteRotator.astro";
+import homeData from "../data/home.yml";
+import projectFile from "../data/projects.json";
+import certFile from "../data/certs.json";
+import type { CertFile, HomeContent, Project } from "../lib/types";
+import { isPlaceholder } from "../lib/richText";
+
+const home = homeData as unknown as HomeContent;
+const projects = projectFile as Project[];
+const certs = certFile as CertFile;
+const featured = home.featured
+  .map((id) => projects.find((project) => project.id === id))
+  .filter((project): project is Project => Boolean(project));
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <section class="pb-8">
+    <div class="font-mono text-xs text-primary">{home.prompt}</div>
+    <h1 class="text-3xl lg:text-4xl font-bold mt-1">{home.name}</h1>
+    <p class="font-mono text-sm mute mt-1">{home.role}</p>
+    <p class="mt-3 max-w-2xl text-[15px] leading-relaxed">{home.bio}</p>
+    {
+      home.researchFocus && (
+        <p class:list={["text-xs mt-2", isPlaceholder(home.researchFocus) && "ph"]}>{home.researchFocus}</p>
+      )
+    }
+    <QuoteRotator prompt={home.quotePrompt} quotes={home.quotes} />
+  </section>
+
+  <section class="pb-8">
+    <div class="flex items-baseline justify-between">
+      <div class="h-sec">{home.projectsHeading}</div>
+      <a href={home.projectsHref} class="font-mono text-xs link link-secondary">{home.projectsLinkLabel}</a>
+    </div>
+    <div class="grid gap-3 md:grid-cols-3">{featured.map((project) => <ProjectCard p={project} />)}</div>
+  </section>
+
+  <section class="pb-8">
+    <div class="flex items-baseline justify-between">
+      <div class="h-sec">{home.certsHeading}</div>
+      <a href={home.certsHref} class="font-mono text-xs link link-secondary">{home.certsLinkLabel}</a>
+    </div>
+    <CertRow />
+    <p class="font-mono text-xs mute mt-2">
+      {home.certNextPrefix} {certs.next.join(" → ")} · {home.certVerified}{" "}
+      <a class="link link-secondary" href={certs.profile}>{home.certProfileLabel}</a>
+    </p>
+  </section>
+
+  <section>
+    <div class="h-sec">{home.stackHeading}</div>
+    <div class="flex flex-wrap gap-1">{home.stack.map((item) => <span class="chip">{item}</span>)}</div>
+  </section>
+</BaseLayout>

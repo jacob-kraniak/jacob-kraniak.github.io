@@ -1,0 +1,15 @@
+---
+import siteData from "../data/site.yml";
+import type { SiteContent } from "../lib/types";
+
+const site = siteData as unknown as SiteContent;
+---
+
+<div class="sticky lg:hidden top-0 z-30 flex h-12 w-full items-center px-2 bg-base-100/90 backdrop-blur border-b line">
+  <label for="my-drawer" class="btn btn-square btn-ghost btn-sm" aria-label="Open menu">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-5 h-5 stroke-current">
+      <path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </label>
+  <a class="font-mono text-sm ml-2" href="/"><span class="text-primary">~/</span>{site.identity.handle}</a>
+</div>

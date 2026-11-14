@@ -1,0 +1,30 @@
+---
+import siteData from "../data/site.yml";
+import type { SiteContent } from "../lib/types";
+
+interface Props {
+  sideBarActiveItemID?: string;
+}
+
+const { sideBarActiveItemID } = Astro.props;
+const site = siteData as unknown as SiteContent;
+---
+
+<ul class="menu menu-sm p-0 font-mono">
+  {
+    site.nav.map((item) => (
+      <li>
+        <a
+          href={item.href}
+          class:list={[
+            "py-1.5 rounded",
+            item.id === sideBarActiveItemID ? "bg-base-300 text-primary" : "mute hover:text-base-content",
+          ]}
+        >
+          <span class="text-primary/60">./</span>
+          {item.label}
+        </a>
+      </li>
+    ))
+  }
+</ul>

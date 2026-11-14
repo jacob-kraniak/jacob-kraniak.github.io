@@ -1,0 +1,19 @@
+# Certifications page intro and roadmap notes.
+# The table, Credly links, and the "next" cert names are src/data/certs.json.
+# `next` in that file is also the sidebar line and the home-page line.
+# status is "active" or "expired". issued / expires are YYYY-MM-DD (expires may be null).
+
+documentTitle: "certs · Jacob Kraniak"
+prompt: "$ cat certs.json | jq '.certs[]'"
+heading: Certifications
+roadmapHeading: roadmap
+nextPrefix: "next:"
+laterPrefix: "later:"
+later: CISSP or a specialized domain
+trackedPrefix: tracked on the
+trackedJoiner: " + "
+tracked:
+  - label: cert-tracker repo
+    href: https://github.com/jacob-kraniak/cybersecurity-certification-tracker
+  - label: kanban board
+    href: https://github.com/users/jacob-kraniak/projects/3/

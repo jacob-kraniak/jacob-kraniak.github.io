@@ -1,0 +1,60 @@
+---
+import certFile from "../data/certs.json";
+import type { CertFile } from "../lib/types";
+
+interface Props {
+  full?: boolean;
+}
+
+const { full = false } = Astro.props;
+const data = certFile as CertFile;
+---
+
+<div class="overflow-x-auto rounded-box border line bg-base-200">
+  <table class="table table-sm font-mono text-xs">
+    <thead>
+      <tr class="mute border-b line">
+        <th></th>
+        <th>cert</th>
+        <th class="hidden sm:table-cell">issuer</th>
+        <th>issued</th>
+        <th>status</th>
+        {full && <th>refs</th>}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        data.certs.map((cert) => (
+          <tr class:list={["border-b line", cert.status === "expired" && "opacity-45 grayscale"]}>
+            <td class="w-12 pr-0">
+              <a href={cert.credly} target="_blank" rel="noopener">
+                <img src={cert.img} alt={cert.short} width="36" height="36" class="min-w-[36px]" />
+              </a>
+            </td>
+            <td class="text-sm font-sans">
+              <a href={cert.credly} target="_blank" rel="noopener" class="hover:text-primary">
+                {full ? cert.name : cert.short}
+              </a>
+            </td>
+            <td class="hidden sm:table-cell">{cert.issuer}</td>
+            <td class="whitespace-nowrap">{cert.issued.slice(0, 7)}</td>
+            <td class="whitespace-nowrap">
+              {cert.status === "active" ? (
+                <span class="text-primary">● active</span>
+              ) : (
+                <span class="mute">○ exp {cert.expires?.slice(0, 4)}</span>
+              )}
+            </td>
+            {full && (
+              <td>
+                <a class="link link-secondary" href={cert.credly} target="_blank" rel="noopener">credly</a>
+                {" · "}
+                <a class="link link-secondary" href={cert.tracker} target="_blank" rel="noopener">tracker</a>
+              </td>
+            )}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

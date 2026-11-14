@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import pageData from "../data/cv.yml";
+import type { CvPage } from "../lib/types";
+import { isPlaceholder } from "../lib/richText";
+
+const page = pageData as unknown as CvPage;
+---
+
+<BaseLayout title={page.documentTitle} sideBarActiveItemID="cv">
+  <div class="font-mono text-xs text-primary">{page.prompt}</div>
+  <h1 class="text-2xl font-bold mt-1 mb-4">{page.heading}</h1>
+  <div class="rounded-box border line bg-base-200 p-5 space-y-2">
+    {page.blocks.map((block) => <p class:list={["text-sm", isPlaceholder(block) && "ph"]}>{block}</p>)}
+  </div>
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+import { parseRich } from "../lib/richText";
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const segments = parseRich(text);
+---
+
+{
+  segments.map((segment) =>
+    segment.type === "link" ? (
+      <a class:list={["link link-secondary", segment.placeholder && "ph"]} href={segment.href} target="_blank" rel="noopener">
+        {segment.value}
+      </a>
+    ) : segment.placeholder ? (
+      <span class="ph">{segment.value}</span>
+    ) : (
+      segment.value
+    )
+  )
+}

@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import pageData from "../data/projects.yml";
+import projectFile from "../data/projects.json";
+import type { Project, ProjectsPage } from "../lib/types";
+import { isPlaceholder } from "../lib/richText";
+
+const page = pageData as unknown as ProjectsPage;
+const projects = projectFile as Project[];
+---
+
+<BaseLayout title={page.documentTitle} sideBarActiveItemID="projects">
+  <div class="font-mono text-xs text-primary">{page.prompt}</div>
+  <h1 class="text-2xl font-bold mt-1 mb-1">{page.heading}</h1>
+  <p class="text-sm mute mb-6">{page.lede}</p>
+  <div class="grid gap-3 md:grid-cols-2">{projects.map((project) => <ProjectCard p={project} detailed />)}</div>
+  <p class:list={["text-xs mt-4", isPlaceholder(page.diagramsNote) && "ph"]}>{page.diagramsNote}</p>
+</BaseLayout>

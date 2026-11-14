@@ -1,0 +1,69 @@
+# Site chrome: title, sidebar, navigation, footer.
+# Page copy is in the other files in this folder.
+# Quote any value that starts with [ so YAML does not treat it as a list.
+
+url: https://jacob-kraniak.github.io
+title: Jacob Kraniak | Cybersecurity Portfolio
+description: Jacob Kraniak — home-lab, certification and security assessment notes.
+
+# Share image. Swap the path when you have a wide image; avatar is the stand-in.
+ogImage: /avatar.jpg
+transitions: true
+
+identity:
+  handle: jacob-kraniak
+  avatar: /avatar.jpg
+  avatarAlt: Jacob Kraniak
+  subtitle: cybersecurity · lab · grc
+  githubUser: jacob-kraniak
+
+sidebar:
+  statusLabel: status
+  status: phase-2 lab build
+  nextLabel: next
+
+nav:
+  - id: home
+    href: /
+    label: index
+  - id: projects
+    href: /projects
+    label: projects
+  - id: certs
+    href: /certs
+    label: certs
+  - id: li-evs
+    href: /li-evs
+    label: li-evs
+  - id: research
+    href: /research
+    label: research
+  - id: oss
+    href: /oss
+    label: oss
+  - id: cv
+    href: /cv
+    label: cv
+  - id: contact
+    href: /contact
+    label: contact
+
+footer:
+  name: jacob kraniak
+  credit: astro + astrofy layout
+  socials:
+    - label: GitHub
+      href: https://github.com/jacob-kraniak
+      icon: github
+    - label: LinkedIn
+      href: https://linkedin.com/in/jacob-kraniak
+      icon: linkedin
+    - label: X
+      href: https://x.com/jacobsk92
+      icon: x
+    - label: Email
+      href: mailto:jacob.kraniak@protonmail.com
+      icon: email
+    - label: Credly
+      href: https://www.credly.com/users/jacob-kraniak/badges
+      icon: credly

@@ -1,0 +1,11 @@
+{
+  "_source": "github.com/jacob-kraniak/jacob-kraniak README + cybersecurity-certification-tracker (Credly). Safe for a Credly sync job to rewrite.",
+  "profile": "https://www.credly.com/users/jacob-kraniak/badges",
+  "next": ["CompTIA Security+", "CompTIA CySA+"],
+  "certs": [
+    { "id": "isc2-cc", "name": "Certified in Cybersecurity (CC)", "short": "ISC2 CC", "issuer": "ISC2", "status": "active", "issued": "2026-05", "expires": null, "img": "/certified_in_cybersecurity_cc_.png", "credly": "https://www.credly.com/badges/951f01b4-0128-41a4-bea3-eaf3d0254d63", "tracker": "https://github.com/jacob-kraniak/cybersecurity-certification-tracker/issues/10" },
+    { "id": "server-plus", "name": "CompTIA Server+ (SK0-004)", "short": "Server+", "issuer": "CompTIA", "status": "active", "issued": "2017-11-18", "expires": null, "img": "/comptia_server_certification.png", "credly": "https://www.credly.com/badges/1fc6fa72-65b5-4d96-bf02-88a27b0e71e2", "tracker": "https://github.com/jacob-kraniak/cybersecurity-certification-tracker/issues/7" },
+    { "id": "network-plus", "name": "CompTIA Network+", "short": "Network+", "issuer": "CompTIA", "status": "expired", "issued": "2017-06-03", "expires": "2023-06-03", "img": "/comptia_network_ce_certification.png", "credly": "https://www.credly.com/badges/7bfcc047-aef1-474e-9350-0c3f470f6aec", "tracker": "https://github.com/jacob-kraniak/cybersecurity-certification-tracker/issues/8" },
+    { "id": "a-plus", "name": "CompTIA A+", "short": "A+", "issuer": "CompTIA", "status": "expired", "issued": "2014-05-14", "expires": "2023-06-03", "img": "/comptia_a_ce_certification.png", "credly": "https://www.credly.com/badges/5bdf806a-4ea6-47e7-8b40-66f946c67727", "tracker": "https://github.com/jacob-kraniak/cybersecurity-certification-tracker/issues/9" }
+  ]
+}

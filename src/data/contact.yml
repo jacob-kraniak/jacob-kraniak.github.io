@@ -1,0 +1,12 @@
+# Contact. Social links are the footer icons in site.yml, not a list on this page.
+
+documentTitle: "contact · Jacob Kraniak"
+prompt: "$ mail"
+heading: Contact
+methodsHeading: preferred methods
+methods:
+  - "[PLACEHOLDER — preferred contact method]"
+  - "[PLACEHOLDER — backup contact method]"
+hihelloHeading: hihello
+hihello: "[PLACEHOLDER — optional HiHello card]"
+note: social links live in the footer icons.

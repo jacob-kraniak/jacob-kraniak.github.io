@@ -119,7 +119,7 @@ mindmap
 - Update the Status column and the mindmap as content is written or priorities change.
 - Always respect NDAs for any employer-related work.
 - Prefer linking to public repos rather than duplicating large amounts of content.
-- When a section is ready for the live site, move the polished copy into the appropriate Gatsby page/component and leave a note here.
+- When a section is ready for the live site, move the polished copy into the matching file under `src/data/` (page copy, nav, and social links in the `.yml` files; project cards in `projects.json`; certification rows in `certs.json`). The repository README lists which file holds which section. Leave a note here.
 
 ---
 
