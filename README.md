@@ -25,6 +25,7 @@ On GitHub, press `.` to open github.dev, edit the file, and commit to `main`. Th
 | Open source | `src/data/oss.yml` |
 | CV | `src/data/cv.yml` |
 | Contact | `src/data/contact.yml` |
+| Referral links | `src/data/referrals.yml` |
 
 Lines that contain `[PLACEHOLDER` are still waiting on copy. They show up amber. Replace the whole placeholder, brackets included. In YAML, quote any value that starts with `[` or contains a colon.
 
@@ -68,6 +69,20 @@ Phase blurbs, the three threads (repo, CT 101 apps, project board), and the scop
 `/projects` is this list. Each item has `status`: `active`, `quiet`, or `idea`. `home-network-security` is not in the list. It is the initiative. The book-of-secret-knowledge fork is on the open-source page.
 
 Home `featured` entries are `{ kind: initiative, id }` or `{ kind: repo, id }`. `kind: repo` must match an `id` in `repos.yml`.
+
+### Add a referral link
+
+Edit `src/data/referrals.yml`. Add an item:
+
+```yaml
+- name: Example
+  url: https://example.com/ref/code
+  category: tools
+  note: "[PLACEHOLDER — one line on why you use it. Edit this.]"
+  active: true
+```
+
+Only `active: true` entries with a `url` show on `/referrals`. Set `active: false` (or leave `url` empty) to keep a link in the file without publishing it. Replace the placeholder note before you treat the line as finished. The page says a signup may earn a credit. There are no sponsorships.
 
 ### Certifications (`src/data/certs.json`)
 

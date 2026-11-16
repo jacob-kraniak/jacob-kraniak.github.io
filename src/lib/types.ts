@@ -131,6 +131,23 @@ export interface InitiativePage {
   sources: { label: string; href: string }[];
 }
 
+export interface Referral {
+  name: string;
+  url: string | null;
+  category: string;
+  note: string;
+  active: boolean;
+}
+
+export interface ReferralsPage {
+  documentTitle: string;
+  prompt: string;
+  heading: string;
+  disclosure: string;
+  empty: string;
+  items: Referral[];
+}
+
 export interface PostsPage {
   documentTitle: string;
   prompt: string;

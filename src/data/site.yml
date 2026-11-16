@@ -54,6 +54,9 @@ nav:
   - id: contact
     href: /contact
     label: contact
+  - id: referrals
+    href: /referrals
+    label: referrals
 
 footer:
   name: jacob kraniak

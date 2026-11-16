@@ -61,7 +61,7 @@ mindmap
 - **Header / Footer**
   - Social links: X (`@JacobSk92`), LinkedIn, GitHub
   - Optional: HiHello digital business card (easy contact exchange)
-- **Navigation**: Home · Datacenter Build · Posts · Repos (`/projects`) · Certifications · Long Island EVs · Research · Open source · CV · Contact. Labels live in `src/data/site.yml`.
+- **Navigation**: Home · Datacenter Build · Posts · Repos (`/projects`) · Certifications · Long Island EVs · Research · Open source · CV · Contact · Referrals (`/referrals`, last in the sidebar). Labels live in `src/data/site.yml`.
 
 ## 2. Hero / About
 
@@ -119,6 +119,13 @@ The live site splits this into three pieces. Do not put the copy back into a com
 - HiHello card (if integrated)
 - Social links repeated for convenience
 
+## 9. Referrals
+
+- Plain list at `/referrals`. Copy and the link list live in `src/data/referrals.yml`.
+- Only `active: true` entries with a URL are rendered. Inactive rows stay in the file.
+- Short disclosure on the page: a signup through a link may earn a credit. No sponsorships.
+- Notes are one line each. Placeholders stay until Jacob writes why he uses the product.
+
 ---
 
 ## Maintenance Notes
@@ -127,7 +134,7 @@ The live site splits this into three pieces. Do not put the copy back into a com
 - Update the Status column and the mindmap as content is written or priorities change.
 - Always respect NDAs for any employer-related work.
 - Prefer linking to public repos rather than duplicating large amounts of content.
-- When a section is ready for the live site, move the polished copy into the matching file under `src/data/` (page copy, nav, social links, the initiative, and the repo list) or `src/content/posts/` (a build-log note). Certification rows stay in `certs.json`. The repository README lists which file holds which section. Leave a note here.
+- When a section is ready for the live site, move the polished copy into the matching file under `src/data/` (page copy, nav, social links, the initiative, the repo list, and referral links) or `src/content/posts/` (a build-log note). Certification rows stay in `certs.json`. The repository README lists which file holds which section. Leave a note here.
 
 ---
 

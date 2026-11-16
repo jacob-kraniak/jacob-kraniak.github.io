@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import pageData from "../data/referrals.yml";
+import type { ReferralsPage } from "../lib/types";
+import { isPlaceholder } from "../lib/richText";
+
+const page = pageData as unknown as ReferralsPage;
+const links = page.items.filter((item) => item.active === true && typeof item.url === "string" && item.url.length > 0);
+---
+
+<BaseLayout title={page.documentTitle} sideBarActiveItemID="referrals">
+  <div class="font-mono text-xs text-primary">{page.prompt}</div>
+  <h1 class="text-2xl font-bold mt-1 mb-3">{page.heading}</h1>
+  <p class="text-sm mute mb-6 max-w-2xl">{page.disclosure}</p>
+
+  {
+    links.length === 0 ? (
+      <p class="text-sm mute">{page.empty}</p>
+    ) : (
+      <ul class="rounded-box border line bg-base-200 max-w-2xl">
+        {links.map((item) => (
+          <li class="px-4 py-3 border-b line last:border-b-0">
+            <div class="flex items-baseline justify-between gap-3">
+              <a class="font-mono text-sm link link-secondary" href={item.url} rel="sponsored noopener">{item.name}</a>
+              <span class="font-mono text-xs mute">{item.category}</span>
+            </div>
+            <p class:list={["text-sm mt-1 leading-snug", isPlaceholder(item.note) ? "ph" : "mute"]}>{item.note}</p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>
