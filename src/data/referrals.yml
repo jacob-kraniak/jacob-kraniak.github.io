@@ -1,0 +1,26 @@
+# Referral links. Only entries with active: true and a url are rendered.
+# Edit the note before you publish a real reason. Quote any value that starts with [.
+
+documentTitle: "referrals · Jacob Kraniak"
+prompt: "$ cat referrals.yml"
+heading: Referrals
+disclosure: >-
+  Referral links for things I use. If you sign up through one, I may get a credit
+  or reward. No sponsorships.
+empty: No active links right now.
+items:
+  - name: Proton
+    url: https://pr.tn/ref/HYTT6ZKY
+    category: privacy
+    note: "[PLACEHOLDER — privacy-focused mail/VPN. Edit this.]"
+    active: true
+  - name: Grok
+    url: https://grok.com/refer/bot?code=WG3XSF8HCXKD
+    category: tools
+    note: "[PLACEHOLDER — why you use it. Edit this.]"
+    active: true
+  - name: Tesla FSD
+    url: null
+    category: auto
+    note: "[PLACEHOLDER — edit this only if you resubscribe.]"
+    active: false

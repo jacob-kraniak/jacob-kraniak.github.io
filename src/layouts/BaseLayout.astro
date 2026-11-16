@@ -28,7 +28,7 @@ const {
 <!doctype html>
 <html lang="en" data-theme="lab">
   <head>
-    <BaseHead title={title} description={description} image={image} ogType={ogType} />
+    <BaseHead title={title} description={description} image={image} ogType={ogType} rss={site.rss} />
     {site.transitions && <ClientRouter />}
   </head>
   <body class="bg-base-100 text-base-content">

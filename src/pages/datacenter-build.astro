@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PostList from "../components/PostList.astro";
+import pageData from "../data/datacenter-build.yml";
+import postsPageData from "../data/posts.yml";
+import type { InitiativePage, PostsPage } from "../lib/types";
+import { getPublicPosts, statusClass } from "../lib/posts";
+
+const page = pageData as unknown as InitiativePage;
+const postsPage = postsPageData as unknown as PostsPage;
+const recent = (await getPublicPosts())
+  .filter((post) => post.data.project === page.postsProject)
+  .slice(0, page.postsLimit);
+---
+
+<BaseLayout title={page.documentTitle} sideBarActiveItemID="datacenter-build">
+  <div class="font-mono text-xs text-primary">{page.prompt}</div>
+  <h1 class="text-2xl font-bold mt-1 mb-1">{page.heading}</h1>
+  <p class="text-sm mute mb-4 max-w-2xl">{page.lede}</p>
+  <div class="rounded-box border line bg-base-200 p-4 mb-8 max-w-2xl">
+    <p class="text-sm">{page.scope}</p>
+  </div>
+
+  <section class="pb-8">
+    <div class="h-sec">{page.tracksHeading}</div>
+    <ul class="font-mono text-sm space-y-3 max-w-2xl">
+      {
+        page.tracks.map((track) => (
+          <li>
+            <span class="text-primary">›</span>{" "}
+            <a class="link link-secondary" href={track.href} target="_blank" rel="noopener">{track.title}</a>
+            <span class="block text-xs mute mt-1 ml-4">{track.note}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="pb-8">
+    <div class="h-sec">{page.phasesHeading}</div>
+    <div class="space-y-3 max-w-2xl">
+      {
+        page.phases.map((phase) => (
+          <article class="rounded-box border line bg-base-200 p-4">
+            <div class="flex items-baseline justify-between gap-3 font-mono text-[11px]">
+              <span class={statusClass(phase.state)}>{phase.state}</span>
+              <span class="mute">{phase.window}</span>
+            </div>
+            <h2 class="font-mono text-sm font-semibold mt-1">{phase.name}</h2>
+            <p class="text-sm mute mt-1 leading-snug">{phase.summary}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="pb-8">
+    <div class="flex items-baseline justify-between">
+      <div class="h-sec">{page.postsHeading}</div>
+      <a href={`/posts/project/${page.postsProject}`} class="font-mono text-xs link link-secondary">{page.postsLinkLabel}</a>
+    </div>
+    {recent.length > 0 && <PostList posts={recent} projectLabels={postsPage.projectLabels} />}
+  </section>
+
+  <section>
+    <div class="h-sec">{page.sourcesHeading}</div>
+    <ul class="font-mono text-xs space-y-1">
+      {
+        page.sources.map((source) => (
+          <li>
+            <span class="text-primary">›</span>{" "}
+            <a class="link link-secondary" href={source.href} target="_blank" rel="noopener">{source.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

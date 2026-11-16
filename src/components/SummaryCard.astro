@@ -1,0 +1,28 @@
+---
+interface Props {
+  href: string;
+  external?: boolean;
+  tag: string;
+  status: string;
+  title: string;
+  summary: string;
+  stack?: string[];
+}
+
+const { href, external = false, tag, status, title, summary, stack = [] } = Astro.props;
+---
+
+<a
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener" : undefined}
+  class="block rounded-box border line bg-base-200 p-4 hover:border-primary transition"
+>
+  <div class="flex items-center justify-between gap-3 font-mono text-[11px]">
+    <span class="text-primary">[{tag}]</span>
+    <span class="mute text-right">{status}</span>
+  </div>
+  <h3 class="font-mono text-sm font-semibold mt-1">{title}</h3>
+  <p class="text-sm mt-1 leading-snug mute">{summary}</p>
+  {stack.length > 0 && <div class="flex flex-wrap gap-1 mt-3">{stack.map((item) => <span class="chip">{item}</span>)}</div>}
+</a>

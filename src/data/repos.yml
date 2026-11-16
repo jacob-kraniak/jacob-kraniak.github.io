@@ -1,0 +1,40 @@
+# Other repos. Status is active, quiet, or idea.
+# home-network-security is not in this list. It is the Datacenter Build initiative.
+# Cert-tracker stays linked from the certs page (siteHref) as well as from here.
+
+documentTitle: "repos · Jacob Kraniak"
+prompt: "$ ls ~/repos"
+heading: Other repos
+lede: A short list. The datacenter work has its own page. Status is a glance, not a commit counter.
+initiativeLabel: Datacenter Build
+initiativeHref: /datacenter-build
+initiativeNote: home-network-security is the active lab repo. It lives on that page, not in this list.
+items:
+  - id: cert
+    title: cert-tracker
+    repo: cybersecurity-certification-tracker
+    status: quiet
+    tag: automation
+    summary: Public log of earned credentials, study plan, and long-term roadmap.
+    stack: [github-actions, projects-v2, credly]
+    siteHref: /certs
+    siteLabel: certs page
+  - id: research
+    title: cybersecurity-research
+    repo: cybersecurity-research
+    status: quiet
+    tag: research
+    summary: Responsible disclosure and public write-ups. The public repo is the source of truth.
+  - id: ideas
+    title: project-ideas
+    repo: Project-ideas
+    status: quiet
+    tag: incubator
+    summary: Public incubator for project ideas. Check NDAs before any employer-related item.
+  - id: smb
+    title: cybersafe_smb
+    repo: cybersafe_smb
+    status: quiet
+    tag: grc
+    summary: Practical security assessments for small businesses and local residents.
+    note: "Last public commit 2026-03-14."

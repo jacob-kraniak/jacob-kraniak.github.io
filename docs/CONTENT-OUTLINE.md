@@ -1,8 +1,8 @@
 # Portfolio Content Outline
 
 > Living document for jacob-kraniak.github.io  
-> Last updated: 2026-07-25  
-> Status: Rough brainstorm → structured outline  
+> Last updated: 2026-11-16  
+> Status: Live site split projects into an initiative, a build log, and a repo list  
 > Branch: `docs/content-outline`
 
 This file is **internal documentation only**. It is not rendered on the live site. Use it as a single source of truth while gathering and refining content.
@@ -24,12 +24,18 @@ mindmap
       Value prop
       CTAs
     Projects & Initiatives
-      Home Network Security
-      CyberSafe SMB
-      Cybersecurity Research
-      Project-ideas incubator
-      Book of Secret Knowledge
-      Containerized Apps / other WIP
+      Datacenter Build
+        home-network-security
+        CT 101 containers
+        GitHub project board
+      Build log / posts
+      Other repos
+        cert-tracker quiet
+        research quiet
+        project-ideas quiet
+        cybersafe_smb quiet
+      Open source
+        book-of-secret-knowledge fork
     Certifications & Roadmap
       Tracker dashboard
       Completed + In-progress
@@ -55,7 +61,7 @@ mindmap
 - **Header / Footer**
   - Social links: X (`@JacobSk92`), LinkedIn, GitHub
   - Optional: HiHello digital business card (easy contact exchange)
-- **Navigation**: Home · Projects · Certifications · Long Island EVs · Contact
+- **Navigation**: Home · Datacenter Build · Posts · Repos (`/projects`) · Certifications · Long Island EVs · Research · Open source · CV · Contact · Referrals (`/referrals`, last in the sidebar). Labels live in `src/data/site.yml`.
 
 ## 2. Hero / About
 
@@ -66,15 +72,17 @@ mindmap
 
 ## 3. Projects & Initiatives
 
-| Project | Source / Repo | Status | Notes |
-|---------|---------------|--------|-------|
-| Home Network Security | `home-network-security` | Active | Diagrams, inventories, Wazuh, Proxmox, containerization |
-| CyberSafe SMB | `cybersafe_smb` + cybersafehome.org | Live service | Affordable SMB audits + local pro-bono work |
-| Cybersecurity Research | `cybersecurity-research` | Active | Responsible disclosure / write-ups focus |
-| Project Ideas incubator | `Project-ideas` | Ongoing | Meta — shows systematic ideation process |
-| Book of Secret Knowledge | Contribution / heavy use of trimstray repo | Idea | Frame as ongoing knowledge curation |
-| Containerized Apps | (to be linked) | Idea | |
-| Other WIP | From Project-ideas + private notes | Idea | **NDA check required** for any employer-related items |
+The live site splits this into three pieces. Do not put the copy back into a component.
+
+| Piece | URL | File |
+|---------|-----|------|
+| Datacenter Build initiative | `/datacenter-build` | `src/data/datacenter-build.yml` |
+| Build log | `/posts`, `/posts/<slug>`, `/posts/project/<id>`, `/posts/tag/<tag>`, `/rss.xml` | `src/content/posts/*.md` |
+| Other repos | `/projects` | `src/data/repos.yml` |
+
+- **Datacenter Build** ties together `home-network-security`, the containers on CT 101 (no separate repo), and GitHub project 1. Phase 1 network build is done. Phase 2 self-hosted services is in progress. Phase 3 routing and remote access is future. The old containerized-apps placeholder is this initiative, not its own card.
+- **Posts** are Markdown with frontmatter (`title`, `pubDate`, `description`, `project`, `tags`, optional `draft`). `draft: true` is omitted from production builds. Seed notes for review live in `src/content/posts/` and are marked with an HTML comment.
+- **Other repos** use status `active`, `quiet`, or `idea`. As of 2026-11-15: HNS is active and is not in this list. cert-tracker, cybersecurity-research, and Project-ideas are quiet. cybersafe_smb is quiet (last public commit 2026-03-14). The book-of-secret-knowledge fork is under Open Source, not here. Cert-tracker stays linked from `/certs`.
 
 ## 4. Certifications & Learning Roadmap
 
@@ -111,6 +119,13 @@ mindmap
 - HiHello card (if integrated)
 - Social links repeated for convenience
 
+## 9. Referrals
+
+- Plain list at `/referrals`. Copy and the link list live in `src/data/referrals.yml`.
+- Only `active: true` entries with a URL are rendered. Inactive rows stay in the file.
+- Short disclosure on the page: a signup through a link may earn a credit. No sponsorships.
+- Notes are one line each. Placeholders stay until Jacob writes why he uses the product.
+
 ---
 
 ## Maintenance Notes
@@ -119,7 +134,7 @@ mindmap
 - Update the Status column and the mindmap as content is written or priorities change.
 - Always respect NDAs for any employer-related work.
 - Prefer linking to public repos rather than duplicating large amounts of content.
-- When a section is ready for the live site, move the polished copy into the matching file under `src/data/` (page copy, nav, and social links in the `.yml` files; project cards in `projects.json`; certification rows in `certs.json`). The repository README lists which file holds which section. Leave a note here.
+- When a section is ready for the live site, move the polished copy into the matching file under `src/data/` (page copy, nav, social links, the initiative, the repo list, and referral links) or `src/content/posts/` (a build-log note). Certification rows stay in `certs.json`. The repository README lists which file holds which section. Leave a note here.
 
 ---
 

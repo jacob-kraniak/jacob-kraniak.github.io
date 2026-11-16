@@ -1,19 +1,43 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import pageData from "../data/projects.yml";
-import projectFile from "../data/projects.json";
-import type { Project, ProjectsPage } from "../lib/types";
-import { isPlaceholder } from "../lib/richText";
+import pageData from "../data/repos.yml";
+import siteData from "../data/site.yml";
+import type { ReposPage, SiteContent } from "../lib/types";
+import { statusClass } from "../lib/posts";
 
-const page = pageData as unknown as ProjectsPage;
-const projects = projectFile as Project[];
+const page = pageData as unknown as ReposPage;
+const site = siteData as unknown as SiteContent;
 ---
 
-<BaseLayout title={page.documentTitle} sideBarActiveItemID="projects">
+<BaseLayout title={page.documentTitle} sideBarActiveItemID="repos">
   <div class="font-mono text-xs text-primary">{page.prompt}</div>
   <h1 class="text-2xl font-bold mt-1 mb-1">{page.heading}</h1>
-  <p class="text-sm mute mb-6">{page.lede}</p>
-  <div class="grid gap-3 md:grid-cols-2">{projects.map((project) => <ProjectCard p={project} detailed />)}</div>
-  <p class:list={["text-xs mt-4", isPlaceholder(page.diagramsNote) && "ph"]}>{page.diagramsNote}</p>
+  <p class="text-sm mute mb-4 max-w-2xl">{page.lede}</p>
+  <p class="font-mono text-xs mute mb-6">
+    <a class="link link-secondary" href={page.initiativeHref}>{page.initiativeLabel}</a>
+    <span> — {page.initiativeNote}</span>
+  </p>
+
+  <ul class="rounded-box border line bg-base-200">
+    {
+      page.items.map((item) => {
+        const href = `https://github.com/${site.identity.githubUser}/${item.repo}`;
+        return (
+          <li class="px-4 py-3 border-b line last:border-b-0">
+            <div class="flex items-baseline justify-between gap-3">
+              <a class="font-mono text-sm link link-secondary" href={href} target="_blank" rel="noopener">{item.title}</a>
+              <span class:list={["font-mono text-xs whitespace-nowrap", statusClass(item.status)]}>{item.status}</span>
+            </div>
+            <p class="text-sm mute mt-1 leading-snug">{item.summary}</p>
+            {item.note && <p class="font-mono text-xs mute mt-1">{item.note}</p>}
+            {item.siteHref && item.siteLabel && (
+              <p class="font-mono text-xs mt-1">
+                <a class="link link-secondary" href={item.siteHref}>{item.siteLabel}</a>
+              </p>
+            )}
+          </li>
+        );
+      })
+    }
+  </ul>
 </BaseLayout>

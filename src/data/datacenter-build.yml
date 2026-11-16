@@ -1,0 +1,68 @@
+# Datacenter Build initiative. Edit the sentences here.
+# Recent posts are not copied into this file. The page lists posts whose
+# frontmatter project is `postsProject` (see src/content/posts).
+
+id: datacenter-build
+documentTitle: "datacenter-build · Jacob Kraniak"
+prompt: "$ cat datacenter-build.md"
+heading: Datacenter Build
+lede: >-
+  One lab, three threads: the home-network-security repo, the containers on CT 101,
+  and the Datacenter Build board. Phase 2 is still in progress.
+tag: lab
+status: phase 2 · in progress
+summary: >-
+  Segmented Omada network plus a Proxmox services host. Not a finished security program.
+stack: [omada, proxmox, wazuh, netbox, portainer]
+scope: >-
+  Phase 2 is the services host. It is not a SOC and it is not a router replacement.
+tracksHeading: threads
+tracks:
+  - title: home-network-security
+    href: https://github.com/jacob-kraniak/home-network-security
+    note: Public repo. Network notes, phase write-ups, and the services host.
+  - title: self-hosted apps
+    href: https://github.com/jacob-kraniak/home-network-security/issues
+    note: No separate repo. Stacks run in Portainer on CT 101. Issues stay in the HNS repo.
+  - title: Datacenter Build
+    href: https://github.com/users/jacob-kraniak/projects/1
+    note: >-
+      GitHub project. The board title is Datacenter Build. The HNS README still
+      points at this same board as the Privacy Migration project.
+phasesHeading: phases
+phases:
+  - name: Network build
+    state: done
+    window: June 2026
+    summary: >-
+      Omada SDN is in place. ER605 V2 gateway, SG2008P switch, EAP225 coverage.
+      Five VLAN roles: management, trusted, IoT, guest, and lab. 802.1Q tagging is at the gateway.
+  - name: Self-hosted services
+    state: in progress
+    window: July 2026 – ongoing
+    summary: >-
+      A Lenovo ThinkCentre M715q Tiny runs Proxmox. Wazuh is on CT 100. Portainer,
+      and the other containers, are on CT 101. On-prem NetBox is the IPAM source of truth.
+      The cloud copy is an archive. Reconcile is still open.
+  - name: Open-source routing and remote access
+    state: future
+    window: not started
+    summary: >-
+      Off-LAN access to the rack, then a later router. WireGuard or Tailscale is not chosen.
+      OPNsense stays in this phase.
+postsHeading: recent notes
+postsProject: datacenter-build
+postsLimit: 5
+postsLinkLabel: "all notes →"
+sourcesHeading: sources
+sources:
+  - label: ROADMAP.md
+    href: https://github.com/jacob-kraniak/home-network-security/blob/main/docs/ROADMAP.md
+  - label: phase-1-completion.md
+    href: https://github.com/jacob-kraniak/home-network-security/blob/main/docs/phases/phase-1-completion.md
+  - label: phase-2 baseline 2026-08-29
+    href: https://github.com/jacob-kraniak/home-network-security/blob/main/docs/phases/phase-2-baseline-2026-08-29.md
+  - label: phase-2 checkpoint 2026-09-16
+    href: https://github.com/jacob-kraniak/home-network-security/blob/main/docs/phases/phase-2-checkpoint-2026-09-16.md
+  - label: phase-2 close definition
+    href: https://github.com/jacob-kraniak/home-network-security/blob/main/docs/phases/phase-2-close-linkedin.md
