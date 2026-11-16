@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { render } from "astro:content";
+import pageData from "../../data/posts.yml";
+import type { PostsPage } from "../../lib/types";
+import { formatDate, getPublicPosts } from "../../lib/posts";
+
+export async function getStaticPaths() {
+  const posts = await getPublicPosts();
+  return posts.map((post) => ({ params: { slug: post.id } }));
+}
+
+const page = pageData as unknown as PostsPage;
+const { slug } = Astro.params;
+const post = (await getPublicPosts()).find((entry) => entry.id === slug);
+if (!post) {
+  throw new Error(`Missing post ${slug}`);
+}
+const { Content } = await render(post);
+const projectLabel = page.projectLabels[post.data.project] ?? post.data.project;
+const projectLink = page.projectLinks[post.data.project] ?? `/posts/project/${post.data.project}`;
+---
+
+<BaseLayout title={`${post.data.title} · Jacob Kraniak`} description={post.data.description} sideBarActiveItemID="posts">
+  <div class="font-mono text-xs text-primary">$ cat {post.id}.md</div>
+  <h1 class="text-2xl font-bold mt-1 mb-1">{post.data.title}</h1>
+  <p class="font-mono text-xs mute mb-3">{formatDate(post.data.pubDate)}</p>
+  <div class="flex flex-wrap gap-1 mb-6">
+    <a href={projectLink} class="chip">{projectLabel}</a>
+    {post.data.tags.map((tag) => <a href={`/posts/tag/${tag}`} class="chip">{tag}</a>)}
+  </div>
+  <article class="post max-w-2xl">
+    <Content />
+  </article>
+</BaseLayout>

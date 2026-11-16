@@ -1,4 +1,5 @@
-# Home page. Featured cards use ids from projects.json. Cert names come from certs.json.
+# Home page. Featured cards: kind `initiative` (src/data/datacenter-build.yml)
+# or kind `repo` (an id in src/data/repos.yml). Cert names come from certs.json.
 # Quotes rotate every 8 seconds. Keep [PLACEHOLDER ...] lines until the real copy exists.
 
 prompt: "$ whoami"
@@ -19,10 +20,14 @@ quotes:
   - text: "[PLACEHOLDER — quote 3]"
     attribution: "[PLACEHOLDER — attribution 3]"
 
-projectsHeading: active projects
-projectsLinkLabel: "all notes →"
+projectsHeading: active work
+projectsLinkLabel: "repos →"
 projectsHref: /projects
-featured: [hns, smb, cert]
+featured:
+  - kind: initiative
+    id: datacenter-build
+  - kind: repo
+    id: cert
 
 certsHeading: certs
 certsLinkLabel: "details →"

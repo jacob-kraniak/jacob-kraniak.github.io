@@ -1,20 +1,32 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
+import SummaryCard from "../components/SummaryCard.astro";
 import CertRow from "../components/CertRow.astro";
 import QuoteRotator from "../components/QuoteRotator.astro";
 import homeData from "../data/home.yml";
-import projectFile from "../data/projects.json";
+import initiativeData from "../data/datacenter-build.yml";
+import reposData from "../data/repos.yml";
+import siteData from "../data/site.yml";
 import certFile from "../data/certs.json";
-import type { CertFile, HomeContent, Project } from "../lib/types";
+import type { CertFile, HomeContent, InitiativePage, ReposPage, SiteContent } from "../lib/types";
 import { isPlaceholder } from "../lib/richText";
 
 const home = homeData as unknown as HomeContent;
-const projects = projectFile as Project[];
+const initiative = initiativeData as unknown as InitiativePage;
+const repos = reposData as unknown as ReposPage;
+const site = siteData as unknown as SiteContent;
 const certs = certFile as CertFile;
-const featured = home.featured
-  .map((id) => projects.find((project) => project.id === id))
-  .filter((project): project is Project => Boolean(project));
+const featured = home.featured.map((item) => {
+  if (item.kind === "initiative") {
+    if (initiative.id !== item.id) {
+      throw new Error(`Home features initiative ${item.id}, but src/data/datacenter-build.yml is ${initiative.id}`);
+    }
+    return { kind: "initiative" as const, page: initiative };
+  }
+  const repo = repos.items.find((entry) => entry.id === item.id);
+  if (!repo) throw new Error(`Home features unknown repo id ${item.id}`);
+  return { kind: "repo" as const, repo };
+});
 ---
 
 <BaseLayout sideBarActiveItemID="home">
@@ -36,7 +48,32 @@ const featured = home.featured
       <div class="h-sec">{home.projectsHeading}</div>
       <a href={home.projectsHref} class="font-mono text-xs link link-secondary">{home.projectsLinkLabel}</a>
     </div>
-    <div class="grid gap-3 md:grid-cols-3">{featured.map((project) => <ProjectCard p={project} />)}</div>
+    <div class="grid gap-3 md:grid-cols-2">
+      {
+        featured.map((item) =>
+          item.kind === "initiative" ? (
+            <SummaryCard
+              href={`/${item.page.id}`}
+              tag={item.page.tag}
+              status={item.page.status}
+              title={item.page.heading}
+              summary={item.page.summary}
+              stack={item.page.stack}
+            />
+          ) : (
+            <SummaryCard
+              href={`https://github.com/${site.identity.githubUser}/${item.repo.repo}`}
+              external
+              tag={item.repo.tag ?? item.repo.status}
+              status={item.repo.status}
+              title={item.repo.title}
+              summary={item.repo.summary}
+              stack={item.repo.stack}
+            />
+          )
+        )
+      }
+    </div>
   </section>
 
   <section class="pb-8">

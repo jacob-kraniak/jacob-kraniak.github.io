@@ -6,16 +6,18 @@ A push to `main` rebuilds the site and deploys it to GitHub Pages. The deploy us
 
 ## Edit content
 
-Copy lives in plain files under `src/data/`. You do not need a local checkout.
+Copy lives in plain files under `src/data/` and `src/content/posts/`. You do not need a local checkout.
 
 On GitHub, press `.` to open github.dev, edit the file, and commit to `main`. The web editor works too: open the file, click the pencil, and commit.
 
 | What you want to change | File |
 | --- | --- |
 | Name, nav labels, sidebar status, footer social links | `src/data/site.yml` |
-| Home intro, quotes, featured projects, stack | `src/data/home.yml` |
-| Projects page intro | `src/data/projects.yml` |
-| Project cards | `src/data/projects.json` |
+| Home intro, quotes, featured cards, stack | `src/data/home.yml` |
+| Datacenter Build initiative | `src/data/datacenter-build.yml` |
+| Build log posts | `src/content/posts/*.md` |
+| Build log index wording | `src/data/posts.yml` |
+| Other repos (`/projects`) | `src/data/repos.yml` |
 | Certifications page intro and roadmap notes | `src/data/certs.yml` |
 | Certification rows, Credly links, what's next | `src/data/certs.json` |
 | Long Island EVs | `src/data/li-evs.yml` |
@@ -34,17 +36,38 @@ The public site URL is `url` in `src/data/site.yml`. The sitemap uses that value
 
 Components in `src/components` and `src/layouts` are the layout. Leave them alone unless the design itself is changing.
 
-### Project cards (`src/data/projects.json`)
+### Add a build-log post
 
-A JSON array, one object per project:
+Create `src/content/posts/my-note.md`. Markdown only, not MDX. Example:
 
-- `id` — short id. `featured` in `home.yml` chooses which cards appear on the home page, in that order.
-- `repo` — GitHub repository name under your user, or `null` when there is no public repo yet.
-- `title`, `tag`, `status`, `summary` — the card.
-- `notes` — bullets on the projects page.
-- `next` — the "next:" line.
-- `stack` — chips.
-- `placeholder` — `true` keeps the summary amber.
+```markdown
+---
+title: Short title
+description: One sentence for the index and the RSS feed.
+pubDate: 2026-11-16
+project: datacenter-build
+tags: [phase-2, wazuh]
+draft: true
+---
+
+The note. Link a repo or PR inline when you have one.
+```
+
+`project` and each `tag` get their own static page (`/posts/project/datacenter-build`, `/posts/tag/wazuh`). Those routes are generated at build time. They are not `?tag=` query strings, so they work on GitHub Pages.
+
+`draft: true` is left out of `npm run build`, the RSS feed, and the initiative's recent notes. `npm run dev` still shows it, so you can read it locally before flipping `draft` to `false` or deleting the line.
+
+The feed is `/rss.xml`.
+
+### Datacenter Build (`src/data/datacenter-build.yml`)
+
+Phase blurbs, the three threads (repo, CT 101 apps, project board), and the scope line. Recent notes are not pasted here. The page lists posts whose `project` is `datacenter-build`.
+
+### Other repos (`src/data/repos.yml`)
+
+`/projects` is this list. Each item has `status`: `active`, `quiet`, or `idea`. `home-network-security` is not in the list. It is the initiative. The book-of-secret-knowledge fork is on the open-source page.
+
+Home `featured` entries are `{ kind: initiative, id }` or `{ kind: repo, id }`. `kind: repo` must match an `id` in `repos.yml`.
 
 ### Certifications (`src/data/certs.json`)
 

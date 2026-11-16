@@ -1,0 +1,13 @@
+# Build log index. The posts themselves are Markdown files in src/content/posts.
+# draft: true is hidden from production. It still shows while `npm run dev` is running.
+
+documentTitle: "posts · Jacob Kraniak"
+prompt: "$ ls ~/posts"
+heading: Build log
+lede: Dated notes tied to a project. New file, frontmatter, push to main.
+empty: No public notes yet.
+rssLabel: rss
+projectLabels:
+  datacenter-build: Datacenter Build
+projectLinks:
+  datacenter-build: /datacenter-build

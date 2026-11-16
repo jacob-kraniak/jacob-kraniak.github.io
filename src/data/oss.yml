@@ -21,6 +21,11 @@ items:
     links:
       - href: https://github.com/github-linguist/linguist/pull/7896
         label: "PR #7896 — add Power Query (M) language support (merged)"
+  - title: book-of-secret-knowledge (fork)
+    blurb: Fork cleanup of a large security reference list. Link fixes and markdown consistency on JK_Revisions. A markdown-link-check Action is still the plan.
+    links:
+      - href: https://github.com/jacob-kraniak/the-book-of-secret-knowledge
+        label: fork — jacob-kraniak/the-book-of-secret-knowledge
   - title: JsonToolsNppPlugin
     blurb: Notepad++ JSON tools. Fork is public; the upstream PR was opened but not merged.
     links:

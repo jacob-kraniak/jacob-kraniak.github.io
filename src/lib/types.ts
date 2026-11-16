@@ -34,11 +34,17 @@ export interface SiteContent {
     credit: string;
     socials: SocialLink[];
   };
+  rss: string;
 }
 
 export interface Quote {
   text: string;
   attribution: string;
+}
+
+export interface FeaturedRef {
+  kind: "initiative" | "repo";
+  id: string;
 }
 
 export interface HomeContent {
@@ -52,7 +58,7 @@ export interface HomeContent {
   projectsHeading: string;
   projectsLinkLabel: string;
   projectsHref: string;
-  featured: string[];
+  featured: FeaturedRef[];
   certsHeading: string;
   certsLinkLabel: string;
   certsHref: string;
@@ -63,26 +69,77 @@ export interface HomeContent {
   stack: string[];
 }
 
-export interface Project {
+export type RepoStatus = "active" | "quiet" | "idea";
+
+export interface RepoItem {
   id: string;
-  repo: string | null;
-  url?: string | null;
   title: string;
-  tag: string;
-  status: string;
+  repo: string;
+  status: RepoStatus;
   summary: string;
-  notes: string[];
-  next: string;
-  stack: string[];
-  placeholder?: boolean;
+  note?: string;
+  stack?: string[];
+  tag?: string;
+  siteHref?: string;
+  siteLabel?: string;
 }
 
-export interface ProjectsPage {
+export interface ReposPage {
   documentTitle: string;
   prompt: string;
   heading: string;
   lede: string;
-  diagramsNote: string;
+  initiativeLabel: string;
+  initiativeHref: string;
+  initiativeNote: string;
+  items: RepoItem[];
+}
+
+export interface InitiativeLink {
+  title: string;
+  href: string;
+  note: string;
+}
+
+export interface InitiativePhase {
+  name: string;
+  state: string;
+  window: string;
+  summary: string;
+}
+
+export interface InitiativePage {
+  id: string;
+  documentTitle: string;
+  prompt: string;
+  heading: string;
+  lede: string;
+  tag: string;
+  status: string;
+  summary: string;
+  stack: string[];
+  scope: string;
+  tracksHeading: string;
+  tracks: InitiativeLink[];
+  phasesHeading: string;
+  phases: InitiativePhase[];
+  postsHeading: string;
+  postsProject: string;
+  postsLimit: number;
+  postsLinkLabel: string;
+  sourcesHeading: string;
+  sources: { label: string; href: string }[];
+}
+
+export interface PostsPage {
+  documentTitle: string;
+  prompt: string;
+  heading: string;
+  lede: string;
+  empty: string;
+  rssLabel: string;
+  projectLabels: Record<string, string>;
+  projectLinks: Record<string, string>;
 }
 
 export interface TrackedLink {

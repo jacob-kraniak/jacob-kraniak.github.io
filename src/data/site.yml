@@ -9,6 +9,7 @@ description: Jacob Kraniak — home-lab, certification and security assessment n
 # Share image. Swap the path when you have a wide image; avatar is the stand-in.
 ogImage: /avatar.jpg
 transitions: true
+rss: /rss.xml
 
 identity:
   handle: jacob-kraniak
@@ -26,9 +27,15 @@ nav:
   - id: home
     href: /
     label: index
-  - id: projects
+  - id: datacenter-build
+    href: /datacenter-build
+    label: datacenter-build
+  - id: posts
+    href: /posts
+    label: posts
+  - id: repos
     href: /projects
-    label: projects
+    label: repos
   - id: certs
     href: /certs
     label: certs

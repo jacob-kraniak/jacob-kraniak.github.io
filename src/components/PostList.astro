@@ -1,0 +1,34 @@
+---
+import { formatDate, type Post } from "../lib/posts";
+
+interface Props {
+  posts: Post[];
+  projectLabels?: Record<string, string>;
+}
+
+const { posts, projectLabels = {} } = Astro.props;
+---
+
+<ul class="space-y-3">
+  {
+    posts.map((post) => (
+      <li class="rounded-box border line bg-base-200 px-4 py-3">
+        <div class="font-mono text-[11px] mute">{formatDate(post.data.pubDate)}</div>
+        <a href={`/posts/${post.id}`} class="font-mono text-sm link link-secondary">
+          {post.data.title}
+        </a>
+        <p class="text-sm mute mt-1 leading-snug">{post.data.description}</p>
+        <div class="flex flex-wrap gap-1 mt-2">
+          <a href={`/posts/project/${post.data.project}`} class="chip">
+            {projectLabels[post.data.project] ?? post.data.project}
+          </a>
+          {post.data.tags.map((tag) => (
+            <a href={`/posts/tag/${tag}`} class="chip">
+              {tag}
+            </a>
+          ))}
+        </div>
+      </li>
+    ))
+  }
+</ul>
